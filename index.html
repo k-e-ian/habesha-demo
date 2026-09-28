@@ -6,12 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Habesha Ethiopian Restaurant | Authentic Ethiopian Food &amp; Coffee Ceremony, Hurlingham, Nairobi</title>
 <meta name="description" content="Authentic Ethiopian flavours in the heart of Nairobi. Shekla tibs, doro wot and sharing platters on injera, a traditional coffee ceremony and a green garden on Argwings Kodhek Road, Hurlingham. Voted Best Value for Money at the inaugural Taste Awards. Order online with M-Pesa or book a table.">
-<meta name="theme-color" content="#008000">
+<meta name="theme-color" content="#0e2a1b">
 <link rel="icon" href="img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Marcellus&family=Noto+Serif+Ethiopic:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="habesha.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@600&family=Jost:wght@400;500;600&family=Noto+Serif+Ethiopic:wght@500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/xl-coffee.jpg">
+<link rel="stylesheet" href="habesha.css?v=4">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Restaurant","name":"Habesha Ethiopian Restaurant","servesCuisine":"Ethiopian","telephone":"+254709828000","email":"info@habesharestaurant.co.ke",
  "address":{"@type":"PostalAddress","streetAddress":"Argwings Kodhek Road, Hurlingham","addressLocality":"Nairobi","addressCountry":"KE"},
@@ -19,110 +20,86 @@
 </script>
 </head>
 <body>
-<div class="concept">Concept preview by WolfXTech for Habesha. Logo, photos and six of the prices are Habesha's own; the rest are marked to confirm.</div>
-<div class="tricolour" aria-hidden="true"></div>
+<div class="concept">Concept preview by WolfXTech for Habesha. Logo and photographs are Habesha's own; prices marked "to confirm" are samples.</div>
 
 <header class="top"><div class="wrap">
   <nav class="left" aria-label="Sections"><a href="#menu">Menu</a><a href="#baraka">Coffee ceremony</a><a href="#garden">Garden &amp; events</a></nav>
   <a class="logo" href="#top"><img src="img/logo.png" alt="Habesha Ethiopian Restaurant" width="1558" height="673"></a>
-  <nav class="right" aria-label="Contact"><a href="#visit">Visit</a><a class="phone" href="tel:+254709828000">0709 828 000</a><a class="btn btn-green btn-sm" href="#menu">Order</a></nav>
+  <nav class="right" aria-label="Contact"><a class="phone" href="tel:+254709828000">0709 828 000</a></nav>
 </div></header>
 
 <main id="top">
   <section class="hero">
-    <div class="wrap">
+    <div class="oval">
       <span class="eth" lang="am">እንኳን ደህና መጡ</span>
       <h1>Authentic Ethiopian flavours in the heart of Nairobi</h1>
-      <p class="lede">Everything arrives on one injera and everyone eats from it. Tibs from the clay pot, wots and greens, then a full coffee ceremony in our garden on Argwings Kodhek Road.</p>
-      <div class="ctas"><a class="btn btn-green" href="#menu">Build your injera</a><a class="btn" href="#garden">Book a table</a></div>
-      <p class="credit">Rated <b>4.3</b> by more than 3,200 guests on Google. <span class="status" id="status"></span></p>
-      <div class="table">
-        <div class="injera"><img src="img/mixed-dish.jpg" alt="A variety of wots served together on one injera" width="960" height="640"></div>
-        <div class="plate"><img src="img/shekla-tibs.jpg" alt="Shekla tibs" width="960" height="640"></div>
-        <div class="plate"><img src="img/doro-wot.jpg" alt="Doro wot" width="960" height="640"></div>
-        <div class="plate"><img src="img/shiro-tegamino.jpg" alt="Shiro tegamino" width="960" height="640"></div>
-        <div class="plate"><img src="img/buna.jpg" alt="Buna, Ethiopian coffee" width="960" height="640"></div>
-        <span class="award"><span aria-hidden="true">★</span> Best Value for Money, inaugural Taste Awards</span>
-      </div>
+      <p>Shared from one injera, finished with a coffee ceremony, in a green garden on Argwings Kodhek Road.</p>
+      <div class="ctas"><a class="btn btn-brass" href="#menu">Order online</a><a class="btn btn-ghost" href="#garden">Book a table</a></div>
+    </div>
+  </section>
+  <div class="facts"><div class="wrap">
+    <span><span class="star" aria-hidden="true">★</span> <b>Best Value for Money</b>, inaugural Taste Awards</span>
+    <span><b>4.3</b> from 3,200+ Google reviews</span>
+    <span id="status"></span>
+  </div></div>
+
+  <section class="screen" id="menu">
+    <div class="wrap intro">
+      <h2>One injera. Everyone eats.</h2>
+      <p>Everything arrives on one big round of injera and the table shares it. Our menu is poured like our coffee, in three rounds. Add dishes as you go and they land on your injera.</p>
+      <div class="filters" role="group" aria-label="Filter the menu"><button type="button" data-diet="" aria-pressed="true">Everything</button><button type="button" data-diet="v" aria-pressed="false">Fasting and vegetarian</button></div>
+    </div>
+  </section>
+  <div class="band" role="img" aria-label="Tibs, wots and greens on the table beside a woven mesob" style="background-image:url(img/xl-platter.jpg)"></div>
+
+  <section class="round dark" id="abol">
+    <div class="wrap">
+      <div class="round-head"><span class="eth" lang="am">አቦል</span><h2>Abol</h2><p>The first round, the strongest cup. From the fire: tibs still sizzling when they reach you.</p></div>
+      <div class="tiles" data-cat="fire"></div>
     </div>
   </section>
 
-  <section id="menu" style="padding-top:64px">
+  <section class="round" id="tona">
     <div class="wrap">
-      <div class="menu-head">
-        <h2>Served in three rounds, like our coffee</h2>
-        <p>Abol, tona and baraka. Tap <b>+</b> and the dish lands on your injera.</p>
-        <div class="filters" role="group" aria-label="Filter"><button type="button" data-diet="" aria-pressed="true">Everything</button><button type="button" data-diet="v" aria-pressed="false">Fasting / vegetarian</button></div>
-      </div>
+      <div class="round-head"><span class="eth" lang="am">ቶና</span><h2>Tona</h2><p>The second round, for sharing. First time eating Ethiopian? It takes three steps.</p></div>
+      <ol class="how">
+        <li><span class="n">1</span><b>One plate, together</b><span>Everything arrives on one injera. Sharing it is the point.</span></li>
+        <li><span class="n">2</span><b>Tear, scoop, eat</b><span>Tear a piece with your right hand and scoop the wot.</span></li>
+        <li><span class="n">3</span><b>White or brown</b><span>White injera is tangy, brown is nuttier. Or ask for both.</span></li>
+      </ol>
+      <div class="tiles" data-cat="share"></div>
+    </div>
+  </section>
 
-      <div class="eat">
-        <div>
-          <div class="round" id="abol">
-            <div class="round-head"><span class="cup" aria-hidden="true"><svg viewBox="0 0 96 120"></svg></span>
-              <div><span class="kicker"><span class="eth" lang="am">አቦል</span>Abol, the first round</span><h2>From the fire</h2><p>The strongest cup, and our strongest plates: tibs still sizzling when they reach you.</p></div></div>
-            <div data-cat="fire"></div>
-          </div>
-
-          <div class="round" id="tona">
-            <div class="round-head"><span class="cup" aria-hidden="true"><svg viewBox="0 0 96 120"></svg></span>
-              <div><span class="kicker"><span class="eth" lang="am">ቶና</span>Tona, the second round</span><h2>Share it, the Habesha way</h2><p>First time eating Ethiopian? Here's the short version.</p></div></div>
-            <div class="guide">
-              <div class="pics"><img src="img/eating.jpg" alt="Hands tearing injera to scoop wot" loading="lazy" width="960" height="640"><img src="img/injera.jpg" alt="Rolls of injera in a basket" loading="lazy" width="960" height="640"></div>
-              <ol>
-                <li><span><b>One plate, together</b><span>Everything arrives on one big injera. Sharing it is the point.</span></span></li>
-                <li><span><b>Tear, scoop, eat</b><span>Tear a piece with your right hand and scoop the wot. No cutlery needed.</span></span></li>
-                <li><span><b>White or brown injera?</b><span>White is tangy and soft, brown is nuttier. Ask for half and half.</span></span></li>
-              </ol>
-            </div>
-            <div data-cat="share"></div>
-          </div>
-
-          <div class="round" id="baraka">
-            <div class="round-head"><span class="cup" aria-hidden="true"><svg viewBox="0 0 96 120"></svg></span>
-              <div><span class="kicker"><span class="eth" lang="am">በረካ</span>Baraka, the third round</span><h2>Buna, the coffee ceremony</h2><p>The last cup, the blessing that sends you on your way.</p></div></div>
-            <div class="ceremony">
-              <img src="img/pour.jpg" alt="Coffee poured from the jebena at Habesha" loading="lazy" width="960" height="640">
-              <div class="tx">
-                Green beans are roasted at your table, ground by hand and brewed in the clay jebena, with frankincense and popcorn. Then the coffee is poured three times.
-                <dl>
-                  <div><dt>Abol<span class="eth" lang="am">አቦል</span></dt><dd>The first and strongest round.</dd></div>
-                  <div><dt>Tona<span class="eth" lang="am">ቶና</span></dt><dd>The second, for conversation.</dd></div>
-                  <div><dt>Baraka<span class="eth" lang="am">በረካ</span></dt><dd>The blessing.</dd></div>
-                </dl>
-              </div>
-            </div>
-            <div data-cat="coffee"></div>
-          </div>
+  <section class="round dark" id="baraka">
+    <div class="wrap">
+      <div class="round-head"><span class="eth" lang="am">በረካ</span><h2>Baraka</h2><p>The third round, the blessing. Buna, the coffee ceremony.</p></div>
+      <div class="ceremony">
+        <img class="pour" src="img/xl-pour.jpg" alt="Coffee poured from the jebena at Habesha" loading="lazy" width="1920" height="1280">
+        <div class="panel">
+          <p>Green beans are roasted at your table, ground by hand and brewed in the clay jebena, with frankincense and popcorn. Then the coffee is poured three times.</p>
+          <dl>
+            <div><dt>Abol<span class="eth" lang="am">አቦል</span></dt><dd>The first and strongest round.</dd></div>
+            <div><dt>Tona<span class="eth" lang="am">ቶና</span></dt><dd>The second, for conversation.</dd></div>
+            <div><dt>Baraka<span class="eth" lang="am">በረካ</span></dt><dd>The blessing that sends you on your way.</dd></div>
+          </dl>
         </div>
-
-        <aside class="yours" id="yours" aria-label="Your injera">
-          <h3>Your injera</h3>
-          <p class="sub">Ready to share when you are.</p>
-          <div class="round-injera" id="plate"><span class="count" id="count">Tap + on a dish and it lands here</span></div>
-          <ul id="yourList"></ul>
-          <div class="total" id="yourTotal" hidden><span>Total</span><span id="yourSum"></span></div>
-          <a class="btn btn-green" href="order.html" id="yourGo" hidden>Order this injera</a>
-          <button class="btn" type="button" id="closeYours">Keep choosing</button>
-        </aside>
       </div>
+      <div class="tiles" data-cat="coffee"></div>
+      <div class="extras" id="extras"></div>
     </div>
   </section>
 
   <section class="garden" id="garden">
+    <div class="photo" role="img" aria-label="Habesha's garden in Hurlingham"><div class="wrap">
+      <h2>A green garden in Hurlingham</h2>
+      <p>Long lunches under the trees, dinners that turn into coffee ceremonies, and a hall dressed for your celebration.</p>
+    </div></div>
     <div class="wrap">
-      <div class="head">
-        <span class="kicker"><span class="eth" lang="am">እንኳን ደህና መጡ</span>Garden and events</span>
-        <h2>A green garden in Hurlingham</h2>
-        <p>Long lunches under the trees, dinners that turn into coffee ceremonies, and a hall dressed for your celebration.</p>
-      </div>
-      <div class="strip">
-        <img src="img/garden.jpg" alt="Habesha's garden compound" loading="lazy" width="960" height="640">
-        <img src="img/diners.jpg" alt="Guests at lunch in the garden" loading="lazy" width="960" height="640">
-        <img src="img/hall.jpg" alt="Habesha's hall dressed for an event" loading="lazy" width="960" height="640">
-      </div>
       <form class="invite" id="bookf" novalidate>
+        <span class="eth" lang="am">እንኳን ደህና መጡ</span>
         <h3>You are invited</h3>
-        <p class="sub">Book a table, or the garden for your occasion. Your booking opens in WhatsApp, ready to send.</p>
+        <p class="sub">Book a table, or the garden for an occasion. Your booking opens in WhatsApp, ready to send.</p>
         <div class="seg" role="group" aria-label="What are you booking?"><button type="button" data-kind="table" aria-pressed="true">A table</button><button type="button" data-kind="event" aria-pressed="false">An event</button></div>
         <label class="field">Name<input name="name" autocomplete="name"></label>
         <div class="row2">
@@ -138,84 +115,87 @@
         <p class="err" id="berr" hidden></p>
         <button class="btn btn-green" type="submit" style="width:100%">Send on WhatsApp</button>
       </form>
-      <blockquote class="quote">Definitely recommend the vegetarian platter so you can try a bit of everything.<cite>Fiona Pearce, Google review</cite></blockquote>
+      <blockquote class="quote">“Definitely recommend the vegetarian platter so you can try a bit of everything.”<cite>Fiona Pearce, Google review</cite></blockquote>
     </div>
   </section>
 
-  <section id="visit">
-    <div class="wrap visit">
-      <img src="img/menu-book.jpg" alt="The leather-bound Habesha menu" loading="lazy" width="960" height="640">
-      <div>
-        <span class="kicker">Visit us</span>
-        <h2>Argwings Kodhek Road, Hurlingham</h2>
-        <dl>
-          <div><dt>Open</dt><dd>Every day, 9am to 11pm</dd></div>
-          <div><dt>Call</dt><dd><a href="tel:+254709828000">0709 828 000</a> or <a href="tel:+254733730469">0733 730 469</a></dd></div>
-          <div><dt>Email</dt><dd><a href="mailto:info@habesharestaurant.co.ke">info@habesharestaurant.co.ke</a></dd></div>
-        </dl>
-        <a class="btn btn-green" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Habesha+Ethiopian+Restaurant+Argwings+Kodhek+Nairobi">Get directions</a>
+  <section class="screen visit" id="visit">
+    <div class="wrap">
+      <h2>Find us on Argwings Kodhek Road</h2>
+      <div class="cols">
+        <div><span>Open every day</span><b>9am to 11pm</b></div>
+        <div><span>Call or WhatsApp</span><a href="tel:+254709828000">0709 828 000</a></div>
+        <div><span>Email</span><a href="mailto:info@habesharestaurant.co.ke">info@habesharestaurant.co.ke</a></div>
       </div>
+      <a class="btn btn-brass" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Habesha+Ethiopian+Restaurant+Argwings+Kodhek+Nairobi">Get directions</a>
     </div>
   </section>
 </main>
 
 <footer><img src="img/logo-negative.png" alt="Habesha" width="1558" height="673"><span class="eth" lang="am">አመሰግናለሁ</span>, thank you for eating with us. Concept by WolfXTech.</footer>
-<button class="injera-btn" id="injeraBtn" type="button" aria-label="Open your injera"><span>your<br>injera</span><b id="injeraCount">0</b></button>
 
-<template id="cupsvg"><g class="steam" fill="none" stroke="hsl(26 14% 52%)" stroke-width="3" stroke-linecap="round"><path d="M36 50 C28 38 44 30 36 16"/><path d="M50 50 C42 36 58 28 50 10"/><path d="M64 50 C56 38 72 30 64 18"/></g><path d="M22 60 H74 C74 88 64 100 48 100 C32 100 22 88 22 60 Z" fill="hsl(24 40% 12%)"/><ellipse cx="48" cy="60" rx="26" ry="5" fill="hsl(24 30% 26%)"/></template>
+<button class="injera-btn" id="injeraBtn" type="button" aria-label="Open your injera" aria-controls="yours"><span>Your<br>injera</span><b id="injeraCount" hidden>0</b></button>
+<div class="scrim" id="scrim"></div>
+<aside class="yours" id="yours" aria-label="Your injera">
+  <h3>Your injera</h3>
+  <p class="sub">Ready to share when you are.</p>
+  <div class="round-injera" id="plate"><span class="count" id="count">Add a dish and it lands here.</span></div>
+  <ul id="yourList"></ul>
+  <div class="total" id="yourTotal" hidden><span>Total</span><span id="yourSum"></span></div>
+  <a class="btn btn-green" href="order.html" id="yourGo" hidden>Order this injera</a>
+  <button class="btn close" type="button" id="closeYours">Keep choosing</button>
+</aside>
 
 <script src="kit.js"></script>
 <script>
-  const now = Kit.nairobiNow(), h = now.getHours(), open = h >= 9 && h < 23, st = document.getElementById('status');
-  st.innerHTML = open ? '<b>Open now</b> until 11pm.' : '<b>Closed now</b>, opens at 9am.';
-  st.classList.toggle('shut', !open);
+  const now = Kit.nairobiNow(), h = now.getHours(), open = h >= 9 && h < 23;
+  document.getElementById('status').innerHTML = open ? '<b>Open now</b> until 11pm' : '<b>Opens at 9am</b> every day';
 
   const b = Kit.basket('habesha-mesob'); let data, diet = '';
-  const dish = it => {
-    const tbc = /confirm/i.test(it.tag || ''), note = it.tag && !tbc ? `<span class="note">${Kit.esc(it.tag)}</span>` : '';
-    return `<div class="dish"><div class="ph">${it.img ? `<img src="img/${it.img}.jpg" alt="" loading="lazy" width="960" height="640">` : ''}</div>
-      <div><h3>${Kit.esc(it.name)}${it.diet === 'v' ? '<span class="fast">Fasting</span>' : ''}${note}</h3><p>${Kit.esc(it.desc || '')}</p></div>
-      <div class="pr"><span class="price">KES ${Kit.fmt(it.price)}</span>${tbc ? '<span class="tbc">price to confirm</span>' : ''}</div>
-      <button class="scoop" type="button" data-add="${it.id}" aria-label="Add ${Kit.esc(it.name)} to your injera">+</button></div>`;
+  const tile = it => {
+    const tbc = /confirm/i.test(it.tag || '');
+    return `<article class="tile"><img src="img/${it.img}.jpg" alt="${Kit.esc(it.name)}" loading="lazy" width="960" height="640">
+      <div class="row"><h3>${Kit.esc(it.name)}</h3><span class="price">KES ${Kit.fmt(it.price)}</span></div>
+      <p>${Kit.esc(it.desc || '')}</p>
+      <div class="meta"><small>${it.diet === 'v' ? '<span class="fast">Fasting</span> ' : ''}${tbc ? 'Price to confirm' : (it.tag ? Kit.esc(it.tag) : '')}</small><button class="add" type="button" data-add="${it.id}">Add to injera</button></div></article>`;
   };
+  const extra = it => `<div class="extra"><h3>${Kit.esc(it.name)}<small>${Kit.esc(it.desc || '')}${/confirm/i.test(it.tag || '') ? ', price to confirm' : ''}</small></h3><span class="price">KES ${Kit.fmt(it.price)}</span><button class="add" type="button" data-add="${it.id}">Add</button></div>`;
   function render() {
     data.categories.forEach(c => {
       const list = c.items.filter(it => !diet || it.diet === diet);
-      document.querySelector(`[data-cat="${c.key}"]`).innerHTML = list.map(dish).join('') || '<p style="color:var(--g-600)">Nothing in this round with that filter.</p>';
+      const big = list.filter(it => !it.id.startsWith('injera-')), small = list.filter(it => it.id.startsWith('injera-'));
+      document.querySelector(`[data-cat="${c.key}"]`).innerHTML = big.map(tile).join('') || '<p>Nothing in this round with that filter.</p>';
+      if (c.key === 'coffee') document.getElementById('extras').innerHTML = small.map(extra).join('');
     });
   }
 
   // your injera: each dish you add lands as a scoop, in rings around the middle
-  function yours() {
+  function yours(bump) {
     const t = Kit.totals(b, data.items), el = document.getElementById('plate');
     el.querySelectorAll('.bit').forEach(x => x.remove());
-    const bits = t.lines.flatMap(l => Array(Math.min(l.qty, 3)).fill(l)).slice(0, 12);
-    const outer = Math.min(bits.length, 6);
+    const bits = t.lines.flatMap(l => Array(Math.min(l.qty, 3)).fill(l)).slice(0, 12), outer = Math.min(bits.length, 6);
     bits.forEach((l, i) => {
-      const inner = i >= 6, ring = inner ? 16 : 32, n = inner ? bits.length - 6 : outer, k = inner ? i - 6 : i;
-      const a = (k / n) * Math.PI * 2 - Math.PI / 2;
+      const inner = i >= 6, ring = inner ? 16 : 32, n = inner ? bits.length - 6 : outer, k = inner ? i - 6 : i, a = (k / n) * Math.PI * 2 - Math.PI / 2;
       el.insertAdjacentHTML('beforeend', `<span class="bit" style="left:${50 + ring * Math.cos(a)}%;top:${50 + ring * Math.sin(a)}%">${l.img ? `<img src="img/${l.img}.jpg" alt="">` : ''}</span>`);
     });
     document.getElementById('count').hidden = t.count > 0;
     document.getElementById('yourList').innerHTML = t.lines.map(l => `<li><span>${l.qty} × ${Kit.esc(l.name)}</span><span>${Kit.fmt(l.line)}</span></li>`).join('');
     document.getElementById('yourSum').textContent = `KES ${Kit.fmt(t.total)}`;
     document.getElementById('yourTotal').hidden = document.getElementById('yourGo').hidden = !t.count;
-    document.getElementById('injeraCount').textContent = t.count;
+    const c = document.getElementById('injeraCount'); c.textContent = t.count; c.hidden = !t.count;
+    if (bump) { const btn = document.getElementById('injeraBtn'); btn.classList.remove('bump'); void btn.offsetWidth; btn.classList.add('bump'); }
   }
-  const panel = document.getElementById('yours');
-  document.getElementById('injeraBtn').onclick = () => panel.classList.add('open');
-  document.getElementById('closeYours').onclick = () => panel.classList.remove('open');
+  const panel = document.getElementById('yours'), scrim = document.getElementById('scrim');
+  const openPanel = on => { panel.classList.toggle('open', on); scrim.classList.toggle('open', on); };
+  document.getElementById('injeraBtn').onclick = () => openPanel(true);
+  document.getElementById('closeYours').onclick = scrim.onclick = () => openPanel(false);
+  addEventListener('keydown', e => { if (e.key === 'Escape') openPanel(false); });
 
   document.addEventListener('click', e => {
-    const a = e.target.closest('[data-add]'); if (a) { b.add(a.dataset.add); yours(); a.classList.add('did'); a.textContent = '✓'; setTimeout(() => { a.classList.remove('did'); a.textContent = '+'; }, 900); }
+    const a = e.target.closest('[data-add]'); if (a) { b.add(a.dataset.add); yours(true); const was = a.textContent; a.classList.add('did'); a.textContent = 'Added'; setTimeout(() => { a.classList.remove('did'); a.textContent = was; }, 1000); }
     const d = e.target.closest('[data-diet]'); if (d) { diet = d.dataset.diet; document.querySelectorAll('[data-diet]').forEach(x => x.setAttribute('aria-pressed', x === d)); render(); }
     const k = e.target.closest('[data-kind]'); if (k) { kind = k.dataset.kind; document.querySelectorAll('[data-kind]').forEach(x => x.setAttribute('aria-pressed', x === k)); guests(); }
   });
-
-  // steam rises from each round's cup the first time you reach it, then stays
-  document.querySelectorAll('.cup svg').forEach(s => s.innerHTML = document.getElementById('cupsvg').innerHTML);
-  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .15 }) : null;
-  document.querySelectorAll('.round').forEach(r => io ? io.observe(r) : r.classList.add('in'));
 
   // booking: a table or an event, typed out for WhatsApp
   let kind = 'table';
