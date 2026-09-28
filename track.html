@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Order | Habesha Ethiopian Restaurant</title><meta name="robots" content="noindex"><meta name="theme-color" content="#008000">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Marcellus&family=Michroma&family=Noto+Serif+Ethiopic:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="habesha.css">
+<style>
+  main { max-width: 620px; margin: 0 auto; padding: 36px 20px 64px; text-align: center; }
+  /* four cups on the tray: each fills with coffee as the order reaches that step */
+  .tray { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 32px 0 8px; background: hsl(20 45% 30%); border-radius: 999px; padding: 18px 20px 14px; }
+  .tray div { display: grid; justify-items: center; gap: 8px; color: hsl(38 42% 88%); font-family: system-ui, sans-serif; font-size: .8125rem; font-weight: 700; }
+  .tray svg { width: 48px; height: 48px; }
+  .tray .fill { transform-origin: 50% 100%; transform: scaleY(0); transition: transform 1s ease; }
+  .tray .on .fill { transform: scaleY(1); }
+  .tray .on { color: var(--gold); }
+  .rc { background: #fff; border-radius: var(--r); padding: 20px; margin-top: 32px; text-align: left; }
+  .rc div { display: flex; justify-content: space-between; gap: 12px; }
+</style>
+</head>
+<body>
+<div class="concept">Concept preview by WolfXTech. Payments are simulated until M-Pesa is connected.</div>
+<div class="tricolour" aria-hidden="true"></div>
+<header class="top"><div class="wrap"><a class="logo" href="index.html"><img src="img/logo.png" alt="Habesha Ethiopian Restaurant" width="1558" height="673"></a><a class="phone" href="tel:+254709828000" style="margin-left:auto">0709 828 000</a></div></header>
+<main aria-live="polite">
+  <p style="margin:0;color:var(--muted);font-family:system-ui,sans-serif">Order <b id="no" style="color:var(--coffee)">…</b></p>
+  <h1 id="title" style="font-size:2.25rem;margin-top:6px">One moment</h1>
+  <p id="text"></p>
+  <div id="act"></div>
+  <div class="tray" id="tray"></div>
+  <div class="rc" id="rc"></div>
+</main>
+<script src="kit.js"></script>
+<script>
+  const id = new URLSearchParams(location.search).get('id') || '';
+  const COPY = {
+    awaiting_payment: ['Check your phone', o => `Enter your M-Pesa PIN to pay KES ${Kit.fmt(o.total)}.`],
+    payment_failed: ["Payment didn't go through", o => Kit.esc(o.payment_error || 'The prompt was cancelled or timed out.')],
+    paid: ['Ameseginalehu, paid', () => 'Your order is with the kitchen.'],
+    preparing: ['In the kitchen', () => 'The tibs is on the fire and the injera is ready.'],
+    ready: ['Ready', o => o.fulfilment === 'pickup' ? 'Waiting for you at Habesha, Argwings Kodhek Road.' : 'Packed and waiting for the rider.'],
+    out_for_delivery: ['On the way', () => 'Your rider has left Hurlingham.'],
+    completed: ['Enjoy', () => 'Tear, scoop, share. Thank you for eating with Habesha.'],
+    cancelled: ['Cancelled', () => 'Call 0709 828 000 and we will sort it out.'],
+  };
+  const CUP = '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 16 H40 C40 32 34 40 24 40 C14 40 8 32 8 16 Z" fill="hsl(38 42% 94%)"/><path class="fill" d="M10 20 H38 C37 31 32 37 24 37 C16 37 11 31 10 20 Z" fill="hsl(24 55% 22%)"/></svg>';
+  const t = Kit.track(id, o => {
+    const [title, text] = COPY[o.status];
+    document.getElementById('no').textContent = o.id;
+    document.getElementById('title').textContent = title;
+    document.getElementById('text').innerHTML = text(o);
+    const s = o.fulfilment === 'pickup' ? [['paid', 'Paid'], ['preparing', 'Cooking'], ['ready', 'Ready'], ['completed', 'Collected']] : [['paid', 'Paid'], ['preparing', 'Cooking'], ['out_for_delivery', 'On the way'], ['completed', 'Delivered']];
+    document.getElementById('tray').hidden = !o.active;
+    document.getElementById('tray').innerHTML = s.map(([k, n]) => `<div class="${o.reached[k] ? 'on' : ''}">${CUP}${n}</div>`).join('');
+    document.getElementById('act').innerHTML = o.status === 'payment_failed' ? '<button class="btn btn-green" id="retry">Send the prompt again</button>' : '';
+    const r = document.getElementById('retry'); if (r) r.onclick = () => { r.disabled = true; t.retry(); };
+    document.getElementById('rc').innerHTML = o.items.map(i => `<div><span>${i.qty} × ${Kit.esc(i.name)}</span><span>${Kit.fmt(i.price * i.qty)}</span></div>`).join('')
+      + (o.delivery_fee ? `<div><span>Delivery</span><span>${Kit.fmt(o.delivery_fee)}</span></div>` : '')
+      + `<div style="font-family:var(--serif);font-size:1.25rem;margin-top:8px"><span>Total</span><span>KES ${Kit.fmt(o.total)}</span></div>`;
+  }, () => { document.getElementById('title').textContent = 'Order not found'; });
+</script>
+</body>
+</html>

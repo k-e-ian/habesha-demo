@@ -1,0 +1,61 @@
+/* Shared design system. Colors come from per-brand tokens in _head.html.j2 (built by build.py).
+   Scales (Refactoring UI):
+     spacing 4 8 12 16 24 32 48 64 96 128 px
+     type    12 14 16 18 20 24 30 36 48 60 72 px (as rem)
+     shadows --shadow-1..5, one radius per brand (--radius) */
+:root {
+  --shadow-1: 0 1px 3px hsla(0, 0%, 0%, .2);
+  --shadow-2: 0 4px 6px hsla(0, 0%, 0%, .1), 0 1px 3px hsla(0, 0%, 0%, .12);
+  --shadow-3: 0 5px 15px hsla(0, 0%, 0%, .12), 0 2px 4px hsla(0, 0%, 0%, .08);
+  --shadow-4: 0 10px 24px hsla(0, 0%, 0%, .15), 0 2px 4px hsla(0, 0%, 0%, .05);
+  --shadow-5: 0 15px 35px hsla(0, 0%, 0%, .2);
+  --green: hsl(142 72% 29%);
+  --green-hover: hsl(144 75% 23%);
+  --green-100: hsl(140 70% 94%);
+  --green-800: hsl(145 70% 20%);
+  --red-100: hsl(4 90% 95%);
+  --red-800: hsl(4 70% 32%);
+  --yellow-100: hsl(45 95% 92%);
+  --yellow-800: hsl(35 80% 25%);
+  /* names used by page styles */
+  --red: var(--btn);
+  --red-deep: var(--primary-900);
+  --gold: var(--accent-500);
+  --cream: var(--bg);
+  --line: var(--grey-200);
+  --ink: var(--grey-900);
+  --paper: #fff;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; font-family: Inter, system-ui, sans-serif; font-size: 1rem; color: var(--grey-900); background: var(--bg); line-height: 1.5; }
+h1, h2, h3 { line-height: 1.2; margin: 0 0 8px; font-weight: 700; }
+a { color: inherit; }
+.wrap { max-width: 1152px; margin: 0 auto; padding: 0 24px; }
+
+.topbar { position: sticky; top: 0; z-index: 40; background: var(--bg); box-shadow: var(--shadow-1); }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 700; font-size: 1.25rem; color: var(--grey-900); }
+.seal { width: 32px; height: 32px; border-radius: var(--radius); background: var(--btn); color: #fff; display: grid; place-items: center; font-size: 1rem; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: var(--radius); font: inherit; font-weight: 600; font-size: 1rem; text-decoration: none; border: 0; cursor: pointer; transition: background .15s, box-shadow .15s, transform .15s; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn-red { background: var(--btn); color: #fff; box-shadow: var(--shadow-1); }
+.btn-red:hover { background: var(--btn-hover); box-shadow: var(--shadow-2); }
+.btn-green { background: var(--green); color: #fff; box-shadow: var(--shadow-1); }
+.btn-green:hover { background: var(--green-hover); box-shadow: var(--shadow-2); }
+.btn-light { background: #fff; color: var(--grey-800); box-shadow: inset 0 0 0 2px var(--grey-200); }
+.btn-light:hover { box-shadow: inset 0 0 0 2px var(--grey-300); }
+.btn-sm { padding: 8px 16px; font-size: .875rem; }
+
+.card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-2); }
+.muted { color: var(--muted); }
+.error { background: var(--red-100); color: var(--red-800); border-radius: var(--radius); padding: 12px 16px; font-size: .875rem; }
+label { font-size: .875rem; font-weight: 600; color: var(--grey-700); display: grid; gap: 4px; }
+input, select, textarea { font: inherit; font-weight: 400; color: var(--grey-900); padding: 12px; border: 0; border-radius: var(--radius); background: #fff; width: 100%; box-shadow: inset 0 0 0 1px var(--grey-300), inset 0 2px 2px hsla(0, 0%, 0%, .05); }
+input:focus, select:focus, textarea:focus { outline: 0; box-shadow: inset 0 0 0 2px var(--primary-500); }
+textarea { min-height: 96px; resize: vertical; }
+.qty { display: inline-flex; align-items: center; border-radius: var(--radius); box-shadow: inset 0 0 0 1px var(--grey-300); overflow: hidden; }
+.qty button { border: 0; background: #fff; width: 32px; height: 32px; font-size: 1.125rem; cursor: pointer; color: var(--grey-700); }
+.qty span { min-width: 24px; text-align: center; font-weight: 600; }
+.demo { background: var(--grey-900); color: var(--grey-200); font-size: .875rem; text-align: center; padding: 8px 16px; }

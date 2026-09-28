@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Mesob | Habesha Ethiopian Restaurant</title><meta name="robots" content="noindex"><meta name="theme-color" content="#008000">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Marcellus&family=Michroma&family=Noto+Serif+Ethiopic:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="habesha.css">
+<style>
+  main { max-width: 620px; margin: 0 auto; padding: 36px 20px 64px; }
+  .box { background: #fff; border-radius: var(--r); padding: 6px 20px 16px; }
+  .ln { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 14px 0; border-bottom: 1px dashed var(--injera-2); }
+  .ln b { font-family: var(--serif); font-weight: 400; font-size: 1.0625rem; }
+  .q button { width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--green); background: transparent; color: var(--green); cursor: pointer; font-weight: 800; }
+  .seg { margin: 24px 0 16px; }
+</style>
+</head>
+<body>
+<div class="concept">Concept preview by WolfXTech. Payments are simulated until M-Pesa is connected.</div>
+<div class="tricolour" aria-hidden="true"></div>
+<header class="top"><div class="wrap"><a class="logo" href="index.html"><img src="img/logo.png" alt="Habesha Ethiopian Restaurant" width="1558" height="673"></a><a class="phone" href="tel:+254709828000" style="margin-left:auto">0709 828 000</a></div></header>
+<main>
+  <span class="caps" style="color:var(--red)">Your mesob</span>
+  <h1 style="font-size:2.25rem;margin:6px 0 16px">Review &amp; pay</h1>
+  <div class="box" id="lines"></div>
+  <form id="f" novalidate>
+    <div class="seg" role="group" aria-label="Pickup or delivery"><button type="button" data-way="pickup" aria-pressed="true">Pick up at Habesha</button><button type="button" data-way="delivery" aria-pressed="false">Deliver to me</button></div>
+    <label class="field">Name<input name="name" autocomplete="name"></label>
+    <label class="field">M-Pesa number<input name="phone" inputmode="tel" autocomplete="tel" placeholder="0712 345 678"></label>
+    <label class="field" id="addr" hidden>Delivery address<textarea name="address" rows="2" placeholder="Estate, road, house or office"></textarea></label>
+    <label class="field">Injera and notes<input name="notes" placeholder="Brown injera please, extra spicy"></label>
+    <p class="err" id="err" hidden></p>
+    <button class="btn btn-green" id="pay" type="submit" style="width:100%" disabled>Pay with M-Pesa</button>
+  </form>
+</main>
+<script src="kit.js"></script>
+<script>
+  const b = Kit.basket('habesha-mesob'); let data, way = 'pickup';
+  function render() {
+    const t = Kit.totals(b, data.items, way, data.delivery_fee);
+    document.getElementById('lines').innerHTML = t.lines.length ? t.lines.map(l => `<div class="ln"><b>${Kit.esc(l.name)}</b><span class="q"><button type="button" data-q="${Kit.esc(l.id)}" data-d="-1" aria-label="One less">−</button> ${l.qty} <button type="button" data-q="${Kit.esc(l.id)}" data-d="1" aria-label="One more">+</button></span><span>${Kit.fmt(l.line)}</span></div>`).join('')
+      + (t.delivery ? `<p style="text-align:right;margin:12px 0 0;color:var(--muted)">Delivery ${Kit.fmt(t.delivery)}</p>` : '') + `<p style="text-align:right;font-family:var(--serif);font-size:1.75rem;margin:6px 0 0">KES ${Kit.fmt(t.total)}</p>`
+      : '<p>Your mesob is empty. <a href="index.html#rounds">See the menu</a>.</p>';
+    const btn = document.getElementById('pay'); btn.disabled = !t.lines.length; btn.textContent = t.lines.length ? `Pay KES ${Kit.fmt(t.total)} with M-Pesa` : 'Pay with M-Pesa';
+  }
+  document.addEventListener('click', e => {
+    const q = e.target.closest('[data-q]'); if (q) { b.add(q.dataset.q, +q.dataset.d); render(); }
+    const w = e.target.closest('[data-way]'); if (w) { way = w.dataset.way; document.querySelectorAll('[data-way]').forEach(x => x.setAttribute('aria-pressed', x === w)); document.getElementById('addr').hidden = way !== 'delivery'; render(); }
+  });
+  document.getElementById('f').addEventListener('submit', async e => {
+    e.preventDefault(); const f = new FormData(e.target), err = document.getElementById('err'), btn = document.getElementById('pay');
+    err.hidden = true; btn.disabled = true; btn.textContent = 'Sending the M-Pesa prompt…';
+    try { const o = await Kit.placeOrder(b, { name: f.get('name'), phone: f.get('phone'), fulfilment: way, address: f.get('address'), notes: f.get('notes') }); location.href = 'track.html?id=' + encodeURIComponent(o.id); }
+    catch (ex) { err.textContent = ex.message; err.hidden = false; render(); }
+  });
+  Kit.menu().then(d => { data = d; render(); });
+</script>
+</body>
+</html>
