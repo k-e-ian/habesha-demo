@@ -2,6 +2,8 @@
 // Same API as kit.js. The menu comes from menu.json next to the page; orders live in this
 // browser's localStorage, and "payment" and kitchen progress are simulated on a timer.
 window.Kit = (() => {
+  // menu.json sits next to this script, so pages in subfolders (e.g. demo2/) find it too
+  const BASE = document.currentScript ? new URL('.', document.currentScript.src) : new URL('.', location.href);
   const fmt = n => Number(n).toLocaleString('en-KE');
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const at = ts => new Date(ts * 1000).toLocaleTimeString('en-KE', { hour: 'numeric', minute: '2-digit' });
@@ -30,7 +32,7 @@ window.Kit = (() => {
   let menuCache;
   async function menu() {
     if (!menuCache) {
-      const d = await (await fetch('menu.json')).json();
+      const d = await (await fetch(new URL('menu.json', BASE))).json();
       const items = {};
       d.categories.forEach(cat => cat.items.forEach(it => { items[it.id] = { ...it, category: cat.name }; }));
       menuCache = { categories: d.categories, delivery_fee: d.delivery_fee ?? 250, delivery: d.delivery ?? true, items };

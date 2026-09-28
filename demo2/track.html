@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Order | Habesha Ethiopian Restaurant</title><meta name="robots" content="noindex">
+<link rel="icon" href="../img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Marcellus&family=Noto+Serif+Ethiopic:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ceremony.css?v=1">
+<style>
+  main { max-width: 640px; margin: 0 auto; padding: 16px 24px 96px; text-align: center; }
+  /* one cup per step: its steam rises when the order reaches it */
+  .cups { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 48px 0 16px; }
+  .cups div { display: grid; justify-items: center; gap: 8px; font-size: .875rem; color: var(--coffee-500); }
+  .cups svg { width: 64px; height: 80px; opacity: .35; transition: opacity .6s; }
+  .cups .on svg { opacity: 1; }
+  .cups .on { color: var(--green-700); }
+  .cups .steam path { stroke-dasharray: 60; stroke-dashoffset: 60; opacity: 0; transition: stroke-dashoffset 1.6s ease, opacity 1.6s ease; }
+  .cups .on .steam path { stroke-dashoffset: 0; opacity: .7; }
+  .rc { background: #fff; border-radius: var(--r); padding: 24px; margin-top: 48px; text-align: left; box-shadow: var(--shadow-3); }
+  .rc div { display: flex; justify-content: space-between; gap: 12px; padding: 4px 0; }
+</style>
+</head>
+<body>
+<div class="concept">Concept preview (demo 2) by WolfXTech. Payments are simulated until M-Pesa is connected.</div>
+<div class="tricolour" aria-hidden="true"></div>
+<div class="wrap"><nav class="top"><a class="logo" href="index.html"><span class="eth" lang="am">ሐበሻ</span><b>HABESHA</b></a></nav></div>
+<main aria-live="polite">
+  <p class="muted" style="margin:0">Order <b id="no" style="color:var(--coffee-900)">…</b></p>
+  <h1 id="title" style="font-size:2.25rem;margin-top:8px">One moment</h1>
+  <p id="text" class="muted"></p>
+  <div id="act"></div>
+  <div class="cups" id="cups"></div>
+  <div class="rc" id="rc"></div>
+</main>
+<template id="cupsvg"><g class="steam" fill="none" stroke="hsl(24 18% 40%)" stroke-width="2.5" stroke-linecap="round"><path d="M36 50 C28 38 44 30 36 16"/><path d="M50 50 C42 36 58 28 50 10"/><path d="M64 50 C56 38 72 30 64 18"/></g><path d="M22 60 H74 C74 88 64 100 48 100 C32 100 22 88 22 60 Z" fill="hsl(24 45% 14%)"/><ellipse cx="48" cy="60" rx="26" ry="5" fill="hsl(24 30% 26%)"/></template>
+<script src="../kit.js"></script>
+<script>
+  const id = new URLSearchParams(location.search).get('id') || '';
+  const cup = `<svg viewBox="0 0 96 120" aria-hidden="true">${document.getElementById('cupsvg').innerHTML}</svg>`;
+  const COPY = {
+    awaiting_payment: ['Check your phone', o => `Enter your M-Pesa PIN to pay KES ${Kit.fmt(o.total)}.`],
+    payment_failed: ["Payment didn't go through", o => Kit.esc(o.payment_error || 'The prompt was cancelled or timed out.')],
+    paid: ['Ameseginalehu, paid', () => 'Your order is with the kitchen.'],
+    preparing: ['In the kitchen', () => 'The tibs is on the fire and the injera is ready.'],
+    ready: ['Ready', o => o.fulfilment === 'pickup' ? 'Waiting for you at Habesha, Argwings Kodhek Road.' : 'Packed and waiting for the rider.'],
+    out_for_delivery: ['On the way', () => 'Your rider has left Hurlingham.'],
+    completed: ['Enjoy', () => 'Tear, scoop, share. Thank you for eating with Habesha.'],
+    cancelled: ['Cancelled', () => 'Call 0709 828 000 and we will sort it out.'],
+  };
+  const t = Kit.track(id, o => {
+    const [title, text] = COPY[o.status];
+    document.getElementById('no').textContent = o.id;
+    document.getElementById('title').textContent = title;
+    document.getElementById('text').innerHTML = text(o);
+    const s = o.fulfilment === 'pickup' ? [['paid', 'Paid'], ['preparing', 'Cooking'], ['ready', 'Ready'], ['completed', 'Collected']] : [['paid', 'Paid'], ['preparing', 'Cooking'], ['out_for_delivery', 'On the way'], ['completed', 'Delivered']];
+    document.getElementById('cups').hidden = !o.active;
+    document.getElementById('cups').innerHTML = s.map(([k, n]) => `<div class="${o.reached[k] ? 'on' : ''}">${cup}${n}</div>`).join('');
+    document.getElementById('act').innerHTML = o.status === 'payment_failed' ? '<button class="btn btn-berbere" id="retry">Send the prompt again</button>' : '';
+    const r = document.getElementById('retry'); if (r) r.onclick = () => { r.disabled = true; t.retry(); };
+    document.getElementById('rc').innerHTML = o.items.map(i => `<div><span>${i.qty} × ${Kit.esc(i.name)}</span><span>${Kit.fmt(i.price * i.qty)}</span></div>`).join('')
+      + (o.delivery_fee ? `<div><span>Delivery</span><span>${Kit.fmt(o.delivery_fee)}</span></div>` : '')
+      + `<div style="font-family:var(--display);font-size:1.25rem;margin-top:8px"><span>Total</span><span>KES ${Kit.fmt(o.total)}</span></div>`;
+  }, () => { document.getElementById('title').textContent = 'Order not found'; });
+</script>
+</body>
+</html>
